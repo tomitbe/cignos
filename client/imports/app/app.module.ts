@@ -2,21 +2,27 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { IonicApp, IonicModule } from "ionic-angular";
 import {LoginComponent} from '../pages/login.component';
+import {homeComponent} from '../pages/home/home.component';
+import {LoggedInComponent} from '../pages/loggedin/loggedin.component';
 
 @NgModule({
   // Components, Pipes, Directive
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    homeComponent,
+    LoggedInComponent   
   ],
   // Entry Components
   entryComponents: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    homeComponent,
+    LoggedInComponent       
   ],
   // Providers
   providers: [
-
+        
   ],
   // Modules
   imports: [

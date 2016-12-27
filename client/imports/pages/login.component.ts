@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,NgZone, OnInit } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Accounts } from 'meteor/accounts-base';
 import { Observable } from 'rxjs/Observable';
@@ -8,6 +8,8 @@ import { MeteorObservable } from 'meteor-rxjs';
 import { InjectUser } from "angular2-meteor-accounts-ui";
 import template from './login.component.html';
 import style from "./login.component.scss";
+import {homeComponent} from './home/home.component';
+import {Session} from 'meteor/session';
  
 @Component({
   selector: 'login',
@@ -17,12 +19,13 @@ import style from "./login.component.scss";
   ]
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  username = 'philippe.vandekerckhove';
+  password = 'Ikweethetbijna9';
 
   constructor(
-    private navCtrl: NavController,
-    private alertCtrl: AlertController
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    private zone: NgZone
     ) {
       
     }
@@ -42,12 +45,30 @@ export class LoginComponent {
   }
  
   private handleLogin(): void {
+   // Session.set('nav',this.navCtrl);
     //console.log("in handle login " + this.username + " + " + this.password);
-    MeteorObservable.call('loginUser', this.username, this.password).subscribe(() => {
-      alert('User successfully logged In.');
-    }, (error) => {
-        alert(`Failed to login due to ${error}`);
-    });
+    let resp = MeteorObservable.call('loginUser', this.username, this.password).subscribe(() => {        
+      Meteor.loginWithPassword(this.username, this.password, (err) => {
+        this.zone.run(() => {
+          if (err) {
+            alert(`Failed to login on Meteors side`);
+          } else {
+            this.navCtrl.setRoot(homeComponent, {});
+          }
+        });
+      });
+
+      }, (error) => {         
+          alert(`Failed to login due to ${error}`);
+      });
+    
+  }
+
+  ngOnInit() {
+    //this.loginserv.InitLoginSession();    
+    if (Meteor.user()) {
+      //this.navCtrl.setRoot(homeComponent,{});
+    }
   }
  
   private handleError(e: Error): void {

@@ -1,54 +1,54 @@
 import {check} from 'meteor/check';
 import {Meteor} from 'meteor/meteor';
 import { HTTP } from 'meteor/http'
+import { User } from '../../both/models/user.model';
+import { UserHTTP } from '../../both/models/userhttp.model';
 
 Meteor.methods({
     loginUser: function (username:string, password:string) {
         check(username, String);
         check(password, String);
+        let resulthandler: UserHTTP;
+        let doc: User;
 
-        //throw new Meteor.Error('403', 'You must be logged-in to reply');
-        //this.unblock();
         try {
             let url = "https://euroclean.be/temconet/site/api/webuser/";
             
-            var result = HTTP.call("POST", url,
+            let result = HTTP.call("POST", url,
                                 {params: {
                                     username: username,
                                     password: password,
                                     action: 'login'
-                                }});
-                console.log(result);                
-             
-            if ((typeof result !== "undefined" && result !== null ? result.data : void 0) != null) {
-                result = result.data;
-                let doc = {};
-                doc.email = email;
-                doc.password = password;
-                //console.log(result);
+                                }});                                   
+            if (result.data) {            
+                
+                resulthandler = result.data;                                
 
-                if (result.id != null) {
-                    if (result.id != null) {
-                        user = Meteor.users.findOne({
-                            "emails.0.address": email
-                        });
-
-                        result.status = 'ok';
-
+                doc = { 
+                    username: username,
+                    password: password                  
+                };
+                
+                if (resulthandler.id) {                    
+                        let user = Meteor.users.findOne({
+                            "username": username
+                        });                        
+                        resulthandler.status = 'ok';                        
                         if (typeof user !== undefined && user != null) {
-
+                            // @todo build in password change management
+                            /*
                             if (user.passwordChange != undefined && user.passwordChange != null) {
                                 Accounts.setPassword(user._id, user.passwordChange);
                                 doc.passwordChange = null;
                             }
-
-                            //Meteor.call("initCampaigns", user.profile.id);
+                            */                            
 
                             doc.profile = {
-                                firstName: result.firstname,
-                                lastName: result.lastname,
-                                id: parseInt(result.id),
-                                language: result.language
+                                firstName: resulthandler.firstname,
+                                lastName: resulthandler.lastname,
+                                id: parseInt(resulthandler.id),
+                                language: resulthandler.language,
+                                password: password
                             };
 
                             Meteor.users.update(user._id, {
@@ -56,23 +56,26 @@ Meteor.methods({
                             });
 
                         } else {
-                            doc.username = email;
-
-                            doc.profile = {
-                                firstName: result.firstname,
-                                lastName: result.lastname,
-                                id: parseInt(result.id),
-                                language: result.language
+                            
+                            doc = { 
+                                username: username,
+                                password: password
                             };
 
+                            doc.profile = {
+                                firstName: resulthandler.firstname,
+                                lastName: resulthandler.lastname,
+                                id: parseInt(resulthandler.id),
+                                language: resulthandler.language,
+                                password: password
+                            };                                                        
                             Accounts.createUser(doc);
                         }
-                    }
                 } else {
-                    result.status = "Authentication failed";
+                    resulthandler.status = "Authentication failed";
                 }
-                if (result.status != null) {
-                    return result.status;
+                if (resulthandler.status != null) {
+                    return resulthandler.status;
                 } else {
                     throw new Meteor.Error("Acces denied!");
                 }
@@ -80,8 +83,7 @@ Meteor.methods({
                 throw new Meteor.Error("Acces denied!");
             }
 
-        
-
+            
 
 
     } catch (e) {
