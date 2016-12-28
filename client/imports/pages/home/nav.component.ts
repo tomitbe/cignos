@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Accounts } from 'meteor/accounts-base';
-import template from './home.component.html';
+import template from './nav.component.html';
 import {LoginComponent} from '../login.component';
-import {loging} from '../../services/loging.service';
+import { homeComponent } from "./home.component";
 
 @Component({
-  selector: 'home',
+  selector: 'navhome',
   template
 })
-export class homeComponent implements OnInit {
+export class navComponent implements OnInit {
+  rootyPage: any = homeComponent;  
   constructor(    
-    public navCtrl: NavController,
-    private log: loging       
+    public navCtrl: NavController    
   ) {}
 
   ngOnInit() {     
       if (!Meteor.user()) {
         this.navCtrl.push(LoginComponent,{});
-      }       
+      }               
+      this.rootyPage = homeComponent;
   }
 
   logOut() {

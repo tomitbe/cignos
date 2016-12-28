@@ -3,7 +3,8 @@ import { AppComponent } from './app.component';
 import { IonicApp, IonicModule } from "ionic-angular";
 import {LoginComponent} from '../pages/login.component';
 import {homeComponent} from '../pages/home/home.component';
-import {LoggedInComponent} from '../pages/loggedin/loggedin.component';
+import {loging} from '../services/loging.service';
+import { navComponent } from "../pages/home/nav.component";
 
 @NgModule({
   // Components, Pipes, Directive
@@ -11,18 +12,18 @@ import {LoggedInComponent} from '../pages/loggedin/loggedin.component';
     AppComponent,
     LoginComponent,
     homeComponent,
-    LoggedInComponent   
+    navComponent  
   ],
   // Entry Components
   entryComponents: [
     AppComponent,
     LoginComponent,
     homeComponent,
-    LoggedInComponent       
+    navComponent       
   ],
   // Providers
   providers: [
-        
+    loging
   ],
   // Modules
   imports: [

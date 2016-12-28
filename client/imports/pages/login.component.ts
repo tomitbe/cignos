@@ -8,7 +8,7 @@ import { MeteorObservable } from 'meteor-rxjs';
 import { InjectUser } from "angular2-meteor-accounts-ui";
 import template from './login.component.html';
 import style from "./login.component.scss";
-import {homeComponent} from './home/home.component';
+import { navComponent } from "./home/nav.component";
 import {Session} from 'meteor/session';
  
 @Component({
@@ -53,7 +53,7 @@ export class LoginComponent {
           if (err) {
             alert(`Failed to login on Meteors side`);
           } else {
-            this.navCtrl.setRoot(homeComponent, {});
+            this.navCtrl.setRoot(navComponent, {});
           }
         });
       });
@@ -67,7 +67,7 @@ export class LoginComponent {
   ngOnInit() {
     //this.loginserv.InitLoginSession();    
     if (Meteor.user()) {
-      //this.navCtrl.setRoot(homeComponent,{});
+      this.navCtrl.setRoot(navComponent,{});
     }
   }
  

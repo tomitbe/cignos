@@ -1,0 +1,19 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Pages</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button color="dark" ion-item (click)="openPage(loginPage)">
+        Login
+      </button>
+      <button color="danger" ion-item (click)="logOut()">
+        Log out
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootyPage"></ion-nav>
