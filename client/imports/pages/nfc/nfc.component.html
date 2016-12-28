@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="cignos">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cignos App</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding class="">
+  <ion-row>
+    <ion-col text-center>
+      <img src="/img/nfc.png" alt="" />
+      <p>To start please swipe the NFC tag</p>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="cignos">
+    <ion-buttons start>
+      <button (click)="logOut()" ion-button icon-left color="royal">
+        <ion-icon name="ios-barcode-outline"></ion-icon>
+        Enter Code
+        
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button (click)="logOut()" ion-button icon-right color="royal">
+        
+        Back
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

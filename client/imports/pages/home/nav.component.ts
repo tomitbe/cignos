@@ -5,6 +5,7 @@ import template from './nav.component.html';
 import {LoginComponent} from '../login.component';
 import { homeComponent } from "./home.component";
 
+
 @Component({
   selector: 'navComponent',
   template,

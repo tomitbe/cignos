@@ -5,6 +5,8 @@ import {LoginComponent} from '../pages/login.component';
 import {homeComponent} from '../pages/home/home.component';
 import {loging} from '../services/loging.service';
 import { navComponent } from "../pages/home/nav.component";
+import { nfcComponent } from "../pages/nfc/nfc.component";
+
 
 @NgModule({
   // Components, Pipes, Directive
@@ -12,14 +14,16 @@ import { navComponent } from "../pages/home/nav.component";
     AppComponent,
     LoginComponent,
     homeComponent,
-    navComponent  
+    navComponent,
+    nfcComponent
   ],
   // Entry Components
   entryComponents: [
     AppComponent,
     LoginComponent,
     homeComponent,
-    navComponent       
+    navComponent,
+    nfcComponent      
   ],
   // Providers
   providers: [
@@ -27,8 +31,8 @@ import { navComponent } from "../pages/home/nav.component";
   ],
   // Modules
   imports: [
-    IonicModule.forRoot(AppComponent)
-  ],
+    IonicModule.forRoot(AppComponent)  
+  ],  
   // Main Component
   bootstrap: [ IonicApp ]
 })
