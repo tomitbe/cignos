@@ -6,9 +6,12 @@ import { Meteor } from "meteor/meteor";
 import { MeteorObservable } from 'meteor-rxjs';
 import { AppModule } from './imports/app/app.module';
 
+
 enableProdMode();
 
 Meteor.startup(() => {
+
+    
     
     const sub2 = MeteorObservable.autorun().subscribe(() => {
         //Todo: does thix also uses gps track?

@@ -27,3 +27,15 @@ declare module "*.sass" {
   const style: string;
   export default style;
 }
+
+declare module 'angular-translate' {
+  module angulartranslate {    
+  }
+}
+
+declare module 'meteor/accounts-base' {
+  module Accounts {
+    function requestPhoneVerification(phoneNumber: string, callback?: Function): void;
+    function verifyPhone(phoneNumber: string, code: string, callback?: Function): void;
+  }
+}

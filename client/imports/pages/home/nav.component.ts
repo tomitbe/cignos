@@ -6,8 +6,9 @@ import {LoginComponent} from '../login.component';
 import { homeComponent } from "./home.component";
 
 @Component({
-  selector: 'navhome',
-  template
+  selector: 'navComponent',
+  template,
+  providers: [navComponent]
 })
 export class navComponent implements OnInit {
   rootyPage: any = homeComponent;  

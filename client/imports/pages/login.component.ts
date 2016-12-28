@@ -10,6 +10,7 @@ import template from './login.component.html';
 import style from "./login.component.scss";
 import { navComponent } from "./home/nav.component";
 import {Session} from 'meteor/session';
+
  
 @Component({
   selector: 'login',
