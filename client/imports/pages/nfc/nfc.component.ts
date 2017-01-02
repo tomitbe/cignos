@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import template from './nfc.component.html';
 import {LoginComponent} from '../login.component';
 import { navComponent } from "../home/nav.component";
-
+import {NFC, Ndef} from 'ionic-native';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { navComponent } from "../home/nav.component";
   template
 })
 export class nfcComponent implements OnInit {
-  navi: any;
+  navi: any;   
   constructor(    
       public navCtrl: NavController,           
       @Inject(forwardRef(() => navComponent)) navi: navComponent
@@ -22,7 +22,19 @@ export class nfcComponent implements OnInit {
     ngOnInit() {     
       if (!Meteor.user()) {
         this.navCtrl.push(LoginComponent,{});
-      }                      
+      }         
+
+      let message = Ndef.textRecord('Hello world');
+      NFC.share([message]).then(this.onSuccess).catch(this.onError);
+
+    }
+
+    onSuccess(obj): void {
+      console.log("in");
+    }
+
+    onError(obj): void {
+      console.log("error " + obj);
     }
 
     logOut() {

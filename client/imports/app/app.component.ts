@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Platform } from "ionic-angular";
 import { StatusBar } from "ionic-native";
 import { Meteor } from 'meteor/meteor';
@@ -12,6 +12,9 @@ import { navComponent } from "../pages/home/nav.component";
 })
 export class AppComponent {
   rootPage: any;  
+  public translatedText: string;
+  public supportedLangs: any[];
+  
   constructor(platform: Platform) {    
     this.rootPage = Meteor.user() ? navComponent : LoginComponent;        
     platform.ready().then(() => {
@@ -20,4 +23,6 @@ export class AppComponent {
       StatusBar.styleDefault();
     });
   }
+  
+
 }
