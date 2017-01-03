@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import template from './app.component.html';
 import { LoginComponent } from "../pages/login.component";
 import { navComponent } from "../pages/home/nav.component";
+import {TranslateService} from 'ng2-translate';
 
 @Component({
   selector: 'app',
@@ -15,7 +16,12 @@ export class AppComponent {
   public translatedText: string;
   public supportedLangs: any[];
   
-  constructor(platform: Platform) {    
+  constructor(platform: Platform,translate: TranslateService) {   
+    translate.addLangs(["en"]);
+    translate.setDefaultLang('en');
+
+        // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('en'); 
     this.rootPage = Meteor.user() ? navComponent : LoginComponent;        
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

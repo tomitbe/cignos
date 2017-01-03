@@ -1,0 +1,13 @@
+{
+  "NAME": "Cignos APP v O.O.1",  
+  "LOGIN_TITLE": "Sign in",
+  "MENU": "Menu items",
+  "LOG_OUT": "Log out",
+  "ABOUT": "About Cignos",
+  "TITLE_APP": "Cignos",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "LOGIN": "Login",
+  "PASS_FORGOTTEN": "Password forgotten",
+  "CHECK_NFC": "Check NFC"
+}

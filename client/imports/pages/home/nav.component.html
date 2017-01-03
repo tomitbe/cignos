@@ -1,16 +1,16 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Pages</ion-title>
+      <ion-title>{{ 'MENU' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
       <button color="dark" ion-item (click)="logOut()">
-        About
+        {{ 'ABOUT' | translate }}
       </button>
       <button color="danger" ion-item (click)="logOut()">
-        Log out
+        {{ 'LOG_OUT' | translate }}
       </button>
     </ion-list>
   </ion-content>

@@ -1,11 +1,4 @@
-<ion-header>
-  <ion-navbar color="cignos">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Cignos App</ion-title>
-  </ion-navbar>
-</ion-header>
+<my-header></my-header>
  
 <ion-content padding class="login-page-content">
   <ion-row>
@@ -13,12 +6,8 @@
       <img src="/img/logo.png" alt="logo" />
     </ion-col>
   </ion-row>
- <button ion-button full (click)="navigateToNfc()">Check NFC</button> 
- <button ion-button full (click)="logOut()">Log Out</button> 
+ <button ion-button full (click)="navigateToNfc()">{{ 'CHECK_NFC' | translate }}</button> 
+ <button ion-button full (click)="logOut()">{{ 'LOG_OUT' | translate }}</button> 
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="cignos">
-    <ion-title>Cignos V.0.0.1</ion-title>
-  </ion-toolbar>
-</ion-footer>
+<my-base-footer></my-base-footer>

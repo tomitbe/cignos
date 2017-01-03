@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { Http, HttpModule } from '@angular/http';
 import { IonicApp, IonicModule } from "ionic-angular";
 import {LoginComponent} from '../pages/login.component';
 import {homeComponent} from '../pages/home/home.component';
+import {myHeader} from '../pages/includes/my-header.component';
+import {myBaseFooter} from '../pages/includes/my-base-footer.component';
 import {loging} from '../services/loging.service';
 import { navComponent } from "../pages/home/nav.component";
 import { nfcComponent } from "../pages/nfc/nfc.component";
+import { TranslateModule } from 'ng2-translate';
+/*
+import { TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
-
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, './i18n', '.json');
+}
+*/
 @NgModule({
   // Components, Pipes, Directive
   declarations: [
@@ -15,7 +24,9 @@ import { nfcComponent } from "../pages/nfc/nfc.component";
     LoginComponent,
     homeComponent,
     navComponent,
-    nfcComponent
+    nfcComponent,
+    myHeader,
+    myBaseFooter
   ],
   // Entry Components
   entryComponents: [
@@ -31,7 +42,9 @@ import { nfcComponent } from "../pages/nfc/nfc.component";
   ],
   // Modules
   imports: [
-    IonicModule.forRoot(AppComponent)  
+    IonicModule.forRoot(AppComponent),
+    HttpModule,
+    TranslateModule.forRoot()  
   ],  
   // Main Component
   bootstrap: [ IonicApp ]

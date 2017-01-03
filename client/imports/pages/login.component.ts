@@ -10,6 +10,7 @@ import template from './login.component.html';
 import style from "./login.component.scss";
 import { navComponent } from "./home/nav.component";
 import {Session} from 'meteor/session';
+import {TranslateService} from 'ng2-translate';
 
  
 @Component({
@@ -26,7 +27,8 @@ export class LoginComponent {
   constructor(
     public navCtrl: NavController,
     public alertCtrl: AlertController,
-    private zone: NgZone
+    private zone: NgZone,
+    public translate : TranslateService
     ) {
       
     }
@@ -70,6 +72,9 @@ export class LoginComponent {
     if (Meteor.user()) {
       this.navCtrl.setRoot(navComponent,{});
     }
+    this.translate.get('NAME').subscribe((res: string) => {
+      console.log(res);    
+    });
   }
  
   private handleError(e: Error): void {

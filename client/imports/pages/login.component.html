@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="cignos">
-    <ion-title>Login</ion-title>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
  
@@ -13,22 +13,18 @@
 
   <ion-list>
     <ion-item>
-      <ion-label stacked>Username</ion-label>
+      <ion-label stacked>{{ 'USERNAME' | translate }}</ion-label>
       <ion-input [(ngModel)]="username" type="text" (keypress)="onInputKeypress($event)"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
+      <ion-label stacked>{{ 'PASSWORD' | translate }}</ion-label>
       <ion-input [(ngModel)]="password" type="password" (keypress)="onInputKeypress($event)"></ion-input>
     </ion-item>
 
 </ion-list>
- <button ion-button full (click)="login()">Log in</button>
- <button ion-button full (click)="passforgotten()" color="dark">Password forgotten</button>
+ <button ion-button full (click)="login()">{{ 'LOGIN' | translate }}</button>
+ <button ion-button full (click)="passforgotten()" color="dark">{{ 'PASS_FORGOTTEN' | translate }}</button>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="cignos">
-    <ion-title>Cignos V.0.0.1</ion-title>
-  </ion-toolbar>
-</ion-footer>
+<my-base-footer></my-base-footer>
