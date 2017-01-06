@@ -48,8 +48,6 @@ export class LoginComponent {
   }
  
   private handleLogin(): void {
-   // Session.set('nav',this.navCtrl);
-    //console.log("in handle login " + this.username + " + " + this.password);
     let resp = MeteorObservable.call('loginUser', this.username, this.password).subscribe(() => {        
       Meteor.loginWithPassword(this.username, this.password, (err) => {
         this.zone.run(() => {

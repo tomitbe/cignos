@@ -6,6 +6,7 @@ import template from './app.component.html';
 import { LoginComponent } from "../pages/login.component";
 import { navComponent } from "../pages/home/nav.component";
 import {TranslateService} from 'ng2-translate';
+import {NFC, Ndef} from 'ionic-native';
 
 @Component({
   selector: 'app',
@@ -23,9 +24,11 @@ export class AppComponent {
         // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('en'); 
     this.rootPage = Meteor.user() ? navComponent : LoginComponent;        
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      // Here you can do any higher level native things you might need.      
+
       StatusBar.styleDefault();
     });
   }

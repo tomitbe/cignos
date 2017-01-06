@@ -9,5 +9,9 @@
   "PASSWORD": "Password",
   "LOGIN": "Login",
   "PASS_FORGOTTEN": "Password forgotten",
-  "CHECK_NFC": "Check NFC"
+  "CHECK_NFC": "Check NFC",
+  "SWIPE_NFC": "To start please swipe the NFC tag",
+  "ENTER_CODE": "Enter Asset code",
+  "BACK": "Back",
+  "SUBMIT": "Submit"
 }

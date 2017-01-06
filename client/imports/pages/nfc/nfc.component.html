@@ -1,26 +1,31 @@
 <my-header></my-header>
  
 <ion-content padding class="">
-  <ion-row>
+  <ion-row>        
     <ion-col text-center>
-      <img src="/img/nfc.png" alt="" />
-      <p>To start please swipe the NFC tag</p>
-    </ion-col>
+      <br />
+      <br />
+      <img src="/img/nfc.png" alt="" width="50%" />
+      <br />
+      <br />
+      <ion-spinner></ion-spinner>
+      <p>{{ 'SWIPE_NFC' | translate }}</p>
+    </ion-col>    
   </ion-row>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar color="cignos">
     <ion-buttons start>
-      <button (click)="logOut()" ion-button icon-left color="royal">
+      <button (click)="goToEnterCode()" ion-button icon-left color="royal">
         <ion-icon name="ios-barcode-outline"></ion-icon>
-        Enter Code
+        {{ 'ENTER_CODE' | translate }}
         
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button (click)="logOut()" ion-button icon-right color="royal">        
-        Back
+      <button (click)="goBack()" ion-button icon-right color="royal">        
+        {{ 'BACK' | translate }}
         <ion-icon name="arrow-dropright-circle"></ion-icon>
       </button>
     </ion-buttons>

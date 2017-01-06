@@ -12,7 +12,7 @@ Meteor.methods({
         let doc: User;
 
         try {
-            let url = "https://euroclean.be/temconet/site/api/webuser/";
+            let url = "***";
             
             let result = HTTP.call("POST", url,
                                 {params: {

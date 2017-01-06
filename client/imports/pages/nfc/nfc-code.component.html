@@ -1,0 +1,22 @@
+<my-header></my-header>
+ 
+<ion-content padding class="">
+  <ion-row>        
+    <ion-col text-center>
+      <br />
+      <br />
+      <img src="/img/nfc.png" alt="" width="50%" />
+      <br />
+      <br />      
+      
+       <ion-item>
+            <ion-label color="primary" floating>{{ 'ENTER_CODE' | translate }}</ion-label>
+            <ion-input [(ngModel)]="code" type="number" (keypress)="onInputKeypress($event)" autofocus></ion-input>
+        </ion-item>
+        <br /><br />
+        <button ion-button full (click)="getCode()">{{ 'SUBMIT' | translate }}</button>
+    </ion-col>    
+  </ion-row>
+</ion-content>
+
+<my-base-footer></my-base-footer>

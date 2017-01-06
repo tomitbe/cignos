@@ -5,7 +5,7 @@ import template from './home.component.html';
 import {LoginComponent} from '../login.component';
 import { navComponent } from "./nav.component";
 import { nfcComponent } from "../nfc/nfc.component";
-
+import { nfcCodeComponent } from "../nfc/nfc-code.component";
 
 @Component({
   selector: 'home',
@@ -28,6 +28,10 @@ export class homeComponent implements OnInit {
 
   navigateToNfc() {
     this.navCtrl.push(nfcComponent,{});
+  }
+
+  navigateToEnterCode() {
+    this.navCtrl.push(nfcCodeComponent,{});
   }
 
   logOut() {

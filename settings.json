@@ -1,0 +1,8 @@
+{
+  "galaxy.meteor.com": {
+    "env": {      
+      "MONGO_URL": "mongodb://customweb:sxcq2bws@gcp-europe-west1-cpu.1.dblayer.com:15283/animco?ssl=true",
+      "ROOT_URL": "http://animco.eu.meteorapp.com"
+    }
+  }
+}

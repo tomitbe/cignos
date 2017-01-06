@@ -25,8 +25,10 @@ export class navComponent implements OnInit {
   }
 
   logOut() {
-    Meteor.logout();
-    this.navCtrl.setRoot(LoginComponent,{});
+    Meteor.logout(() => {
+      this.navCtrl.setRoot(LoginComponent,{});
+    });
+    
   }
  
 

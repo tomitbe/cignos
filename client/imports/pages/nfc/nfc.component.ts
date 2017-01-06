@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject, forwardRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import template from './nfc.component.html';
 import {LoginComponent} from '../login.component';
 import { navComponent } from "../home/nav.component";
+import {homeComponent} from '../home/home.component';
 import {NFC, Ndef} from 'ionic-native';
 
 
@@ -12,22 +13,40 @@ import {NFC, Ndef} from 'ionic-native';
 })
 export class nfcComponent implements OnInit {
   navi: any;   
-  constructor(    
+  constructor(
+      platform: Platform,
       public navCtrl: NavController,           
       @Inject(forwardRef(() => navComponent)) navi: navComponent
       ) {
-        this.navi = navi;        
-    }
+          this.navi = navi;        
+
+          platform.ready().then(() => {             
+            console.log("in ready state");           
+            this.addNfcListeners();
+          });
+
+        }
+
 
     ngOnInit() {     
       if (!Meteor.user()) {
         this.navCtrl.push(LoginComponent,{});
       }         
-
-      let message = Ndef.textRecord('Hello world');
-      NFC.share([message]).then(this.onSuccess).catch(this.onError);
-
+      
     }
+
+
+    addNfcListeners():void {
+        NFC.addTagDiscoveredListener('text/plain',(res) => {
+          console.log("in success" + res);
+        });
+        NFC.addNdefListener(() => {
+          console.log("in success ndef listener");
+        },(fail) => {
+          console.log("fail in NDEF listener");
+        });
+    }
+  
 
     onSuccess(obj): void {
       console.log("in");
@@ -41,5 +60,12 @@ export class nfcComponent implements OnInit {
      this.navi.logOut();
     }
  
+    goBack() {
+      this.navCtrl.setRoot(homeComponent,{});
+    }
+
+    goToEnterCode() {
+      this.navCtrl.setRoot(homeComponent,{});
+    }
 
 }
