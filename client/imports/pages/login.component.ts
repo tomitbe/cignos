@@ -21,8 +21,8 @@ import {TranslateService} from 'ng2-translate';
   ]
 })
 export class LoginComponent {
-  username = 'philippe.vandekerckhove';
-  password = 'Ikweethetbijna9';
+  username = 'philippe';
+  password = '';
 
   constructor(
     public navCtrl: NavController,

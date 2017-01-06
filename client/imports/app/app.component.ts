@@ -3,7 +3,7 @@ import { Platform } from "ionic-angular";
 import { StatusBar } from "ionic-native";
 import { Meteor } from 'meteor/meteor';
 import template from './app.component.html';
-import { LoginComponent } from "../pages/login.component";
+import { nfcComponent } from "../pages/nfc/nfc.component";
 import { navComponent } from "../pages/home/nav.component";
 import {TranslateService} from 'ng2-translate';
 import {NFC, Ndef} from 'ionic-native';
@@ -23,7 +23,7 @@ export class AppComponent {
 
         // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('en'); 
-    this.rootPage = Meteor.user() ? navComponent : LoginComponent;        
+    this.rootPage = nfcComponent;        
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
